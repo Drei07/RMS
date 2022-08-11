@@ -4,7 +4,7 @@ include_once  __DIR__.'/../../database/dbconfig2.php';
 
 
 
-require '../vendor/autoload.php';
+require '../vendor2/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
