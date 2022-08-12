@@ -183,7 +183,24 @@ $program = $program_data['programs'];
                         <h7>Student</h7>
                         <button class="btn-success change" onclick="Grade()"><i class='bx bx-spreadsheet'></i> Grade</button>
 						<button class="btn-success change" onclick="Profile()"><i class='bx bxs-user'></i> Profile</button>
+						<?php
 
+							if($student_grade_1 == NULL){
+						?>
+							<button class="delete2"><a href="controller/delete-class-student.php?LRN=<?php echo $LRN ?>&classId=<?php echo $classId ?>&Id=<?php echo $Id?>" class="btn-delete">Delete Student</a></button>
+						<?php
+
+							}
+							else if ($student_grade_2 == NULL){
+						?>
+							<button class="delete2"><a href="controller/delete-class-student.php?LRN=<?php echo $LRN ?>&classId=<?php echo $classId ?>&Id=<?php echo $Id?>" class="btn-delete">Delete Student</a></button>						<?php
+							}
+							else{
+						?>
+							
+						<?php
+							}
+						?>
 
 					</div>
 
@@ -688,7 +705,7 @@ $program = $program_data['programs'];
 				swal({
 				title: "Delete?",
 				text: "Are you sure do you want to delete?",
-				icon: "Warning",
+				icon: "warning",
 				buttons: true,
 				dangerMode: true,
 			})
