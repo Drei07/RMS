@@ -139,6 +139,24 @@ echo $output;
 
 <script src="../../src/node_modules/sweetalert/dist/sweetalert.min.js"></script>
 <script>
+$('.view').on('click', function(e){
+  e.preventDefault();
+  const href = $(this).attr('href')
+
+        swal({
+        title: "View SF9?",
+        text: "Do you want to view more?",
+        icon: "info",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          document.location.href = href;
+        }
+      });
+})
+
 
 
 </script>
