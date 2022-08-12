@@ -822,10 +822,11 @@ main .data-form .registration {
 	padding: 2rem;
 }
 
-main .data-form .registration .printer {
+main .printer {
 	font-size: 40px;
 	position: absolute;
 	right: 60px;
+	top: 100px;
 	cursor: pointer;
 }
 
