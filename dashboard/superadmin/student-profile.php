@@ -166,6 +166,8 @@ $program = $program_data['programs'];
 
 			</ul>
 
+			<a href="../excel/SF10?programId=<?php echo $programID?>&LRN=<?php echo $LRN ?>" class="print"><i class='bx bx-printer printer'></i></a>
+
 			<!-- GRADE 11 REPORT CARD -->
 
 			<section class="data-form">
@@ -173,8 +175,6 @@ $program = $program_data['programs'];
 					Grade 11
 				</div>
 				<div class="registration" >
-				
-				<a href="../excel/SF10?programId=<?php echo $programID?>&LRN=<?php echo $LRN ?>" class="print"><i class='bx bx-printer printer'></i></a>
 
 				<label class="form-label" style="text-align: left; padding-top: .5rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;"><i class='bx bxs-report'></i> 1st Semester Report Card</label>
 
@@ -483,8 +483,6 @@ $program = $program_data['programs'];
 				</div>
 				<div class="registration" >
 				
-				<a href="../excel/SF9?programId=<?php echo $programID?>&LRN=<?php echo $LRN ?>&year_level=<?php echo $GRADE12 ?>" class="print"><i class='bx bx-printer printer'></i></a>
-
 				<label class="form-label" style="text-align: left; padding-top: .5rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;"><i class='bx bxs-report'></i> 1st Semester Report Card</label>
 
 					<table>
@@ -1201,7 +1199,7 @@ $program = $program_data['programs'];
 		const href = $(this).attr('href')
 
 				swal({
-				title: "Print?",
+				title: "Print SF10?",
 				text: "Are you sure do you want to print this report card?",
 				icon: "info",
 				buttons: true,
