@@ -791,7 +791,7 @@ $program = $program_data['programs'];
                         <h5><?php echo $last_name?>, <?php echo $first_name?> <?php echo $middle_name?></h5>
                         <p><?php echo $studentId ?></p>
                         <h7>Student</h7>
-						<button class="delete2"><a href="controller/delete-student-data-controller.php?id=<?php echo $student_Id ?>" class="btn-delete">Delete Account</a></button>
+						<button class="delete2"><a href="controller/delete-student-data-controller.php?Id=<?php echo $student_Id ?>" class="btn-delete">Delete Account</a></button>
 						<button class="btn-success change" onclick="overview()"><i class='bx bx-info-square'></i> Overview</button>
 
 
