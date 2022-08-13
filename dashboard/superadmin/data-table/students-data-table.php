@@ -14,12 +14,7 @@ if(!$superadmin_home->is_logged_in())
 
 function get_total_row($pdoConnect)
 {
-  $query = "
-  SELECT * FROM student
-  ";
-  $statement = $pdoConnect->prepare($query);
-  $statement->execute();
-  return $statement->rowCount();
+
 }
 
 $total_record = get_total_row($pdoConnect);
@@ -36,13 +31,13 @@ else
 }
 
 $query = "
-SELECT * FROM student 
+SELECT * FROM student WHERE account_status = :status
 ";
 $output = '';
 if($_POST['query'] != '')
 {
   $query .= '
-  WHERE LRN LIKE "%'.str_replace(' ', '%', $_POST['query']).'%"
+  AND LRN LIKE "%'.str_replace(' ', '%', $_POST['query']).'%"
   ';
 }
 
@@ -51,11 +46,11 @@ $query .= 'ORDER BY last_name ASC ';
 $filter_query = $query . 'LIMIT '.$start.', '.$limit.'';
 
 $statement = $pdoConnect->prepare($query);
-$statement->execute();
+$statement->execute(array(":status" => "active"));
 $total_data = $statement->rowCount();
 
 $statement = $pdoConnect->prepare($filter_query);
-$statement->execute();
+$statement->execute(array(":status" => "active"));
 $total_filter_data = $statement->rowCount();
 
 if($total_data > 0)
