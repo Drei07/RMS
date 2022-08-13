@@ -942,7 +942,25 @@ main .data-form .subject-type {
 	padding-right: 20px;
 	font-weight:bold;
   }
+
+  @media screen and (max-width:500px){
+	main .printer{
+		font-size: 30px;
+		right: 20px;
+		top: 85px;
+	}
+  }
   
+  @media screen and (max-width:450px){
+	main .data-form table {
+		border-collapse: collapse;
+		width: 100%;
+		font-size: 10px;
+	  }
+	main .data-form .registration {
+		padding: .8rem;
+	}
+  }
   
 
 /* END OF FORMS */

@@ -809,7 +809,7 @@ $program = $program_data['programs'];
 		const href = $(this).attr('href')
 
 				swal({
-				title: "Print?",
+				title: "Print SF9?",
 				text: "Are you sure do you want to print this report card?",
 				icon: "info",
 				buttons: true,
