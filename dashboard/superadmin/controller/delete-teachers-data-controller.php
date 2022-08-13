@@ -10,17 +10,20 @@ if(!$superadmin_home->is_logged_in())
  $superadmin_home->redirect('');
 }
 
-
-
-    $pdoQuery = "DELETE FROM user where userId =" . $_GET['Id'];
-    $pdoResult = $pdoConnect->prepare($pdoQuery);
-    $pdoResult->execute();
+        $pdoQuery = "UPDATE user SET account_status = :status WHERE userId=". $_GET['Id'];
+        $pdoResult = $pdoConnect->prepare($pdoQuery);
+        $pdoExec = $pdoResult->execute(
+        array
+        ( 
+        ":status"      => "disabled",
+        )
+        );
 
         $_SESSION['status_title'] = "success!";
         $_SESSION['status'] = "Teachers account successfully deleted";
         $_SESSION['status_code'] = "success";
         $_SESSION['status_timer'] = 100000;
         header('Location: ../teachers-data');
-        $pdoConnect = null;
+
 
 ?>

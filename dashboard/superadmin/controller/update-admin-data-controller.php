@@ -34,7 +34,7 @@ if(isset($_POST['btn-update'])){
     $_SESSION['status'] = "Admin profile succesfully updated";
     $_SESSION['status_code'] = "success";
     $_SESSION['status_timer'] = 40000;
-    header("Location: ../Admin-profile?id=$EmployeeId");
+    header("Location: ../Admin-profile?id=$userId");
 
 }
 else{
@@ -43,7 +43,7 @@ else{
     $_SESSION['status'] = "Something went wrong, please try again!";
     $_SESSION['status_code'] = "error";
     $_SESSION['status_timer'] = 100000;
-    header("Location: ../Admin-profile?id=$EmployeeId");
+    header("Location: ../Admin-profile?id=$userId");
     
     
 }

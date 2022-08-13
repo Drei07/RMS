@@ -14,12 +14,7 @@ if(!$superadmin_home->is_logged_in())
 
 function get_total_row($pdoConnect)
 {
-  $query = "
-  SELECT * FROM admin
-  ";
-  $statement = $pdoConnect->prepare($query);
-  $statement->execute();
-  return $statement->rowCount();
+
 }
 
 $total_record = get_total_row($pdoConnect);
@@ -36,13 +31,13 @@ else
 }
 
 $query = "
-SELECT * FROM admin 
+SELECT * FROM admin WHERE account_status = :status
 ";
 $output = '';
 if($_POST['query'] != '')
 {
   $query .= '
-  WHERE employeeId LIKE "%'.str_replace(' ', '%', $_POST['query']).'%"
+  AND employeeId LIKE "%'.str_replace(' ', '%', $_POST['query']).'%"
   OR adminFirst_Name LIKE "%'.str_replace(' ', '%', $_POST['query']).'%"
   OR adminMiddle_Name LIKE "%'.str_replace(' ', '%', $_POST['query']).'%"
   OR adminLast_Name LIKE "%'.str_replace(' ', '%', $_POST['query']).'%"
@@ -57,11 +52,11 @@ $query .= 'ORDER BY userId DESC ';
 $filter_query = $query . 'LIMIT '.$start.', '.$limit.'';
 
 $statement = $pdoConnect->prepare($query);
-$statement->execute();
+$statement->execute(array(":status" => "active"));
 $total_data = $statement->rowCount();
 
 $statement = $pdoConnect->prepare($filter_query);
-$statement->execute();
+$statement->execute(array(":status" => "active"));
 $total_filter_data = $statement->rowCount();
 
 if($total_data > 0)
@@ -86,7 +81,7 @@ $output = '
       <td>'.$row["adminEmail"].'</td>
       <td>'. ($row['adminStatus']=="N" ? '<p class="btn-warning N">Pending</p>' :  '<p class="btn-success Y">Active</p>') . '</td>
       <td>'.$row["created_at"].'</td>
-      <td><button type="button" class="btn btn-primary V"> <a href="admin-profile?id='.$row["employeeId"].'" class="view"><i class="bx bx-low-vision"></i></a></button></td>
+      <td><button type="button" class="btn btn-primary V"> <a href="admin-profile?id='.$row["userId"].'" class="view"><i class="bx bx-low-vision"></i></a></button></td>
 
     </tr>
     ';
