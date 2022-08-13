@@ -16,11 +16,11 @@ $stmt->execute(array(":uid"=>$_SESSION['superadminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$uniqueId = $_GET["id"];
+$userId = $_GET["id"];
 
-$pdoQuery = "SELECT * FROM user WHERE uniqueID = :id";
+$pdoQuery = "SELECT * FROM user WHERE userId = :id";
 $pdoResult = $pdoConnect->prepare($pdoQuery);
-$pdoExec = $pdoResult->execute(array(":id"=>$uniqueId));
+$pdoExec = $pdoResult->execute(array(":id"=>$userId));
 $employee = $pdoResult->fetch(PDO::FETCH_ASSOC);
 
 $employee_id = $employee["userId"];

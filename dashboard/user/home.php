@@ -199,7 +199,7 @@ $Grade12 		= "Grade12";
 			<div class="data">
 				<div class="content-data">
 					<div class="head">
-						<h3>Sales Report</h3>
+						<h3>Calendar</h3>
 						<div class="menu">
 							<i class='bx bx-dots-horizontal-rounded icon'></i>
 							<ul class="menu-link">

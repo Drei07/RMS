@@ -16,14 +16,14 @@ $stmt->execute(array(":uid"=>$_SESSION['superadminSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$employeeId = $_GET["id"];
+$userId = $_GET["id"];
 
-$pdoQuery = "SELECT * FROM admin WHERE employeeId = :id";
+$pdoQuery = "SELECT * FROM admin WHERE userId = :id";
 $pdoResult = $pdoConnect->prepare($pdoQuery);
-$pdoExec = $pdoResult->execute(array(":id"=>$employeeId));
+$pdoExec = $pdoResult->execute(array(":id"=>$userId));
 $employee = $pdoResult->fetch(PDO::FETCH_ASSOC);
 
-$employee_id = $employee["userId"];
+$employeeId = $employee["employeeId"];
 $employee_profile = $employee["adminProfile"];
 $employee_Lname = $employee["adminLast_Name"];
 $employee_Fname = $employee["adminFirst_Name"];
@@ -144,11 +144,11 @@ $employee_last_update = $employee["updated_at"];
                         <?php
                          echo ($employee_status=="N" ? '<button class="N">Pending</button>' :  '<button class="Y">Active</button>')
                         ?>
-						<button class="delete2"><a href="controller/delete-admin-data-controller.php?Id=<?php echo $employee_id ?>" class="btn-delete">Delete Account</a></button>
+						<button class="delete2"><a href="controller/delete-admin-data-controller.php?Id=<?php echo $userId ?>" class="btn-delete">Delete Account</a></button>
 
 					</div>
 
-					<form action="controller/update-admin-data-controller.php?Id=<?php echo $employee_id ?>" method="POST" class="row gx-5 needs-validation" name="form" onsubmit="return validate()"  novalidate style="overflow: hidden;">
+					<form action="controller/update-admin-data-controller.php?Id=<?php echo $userId ?>" method="POST" class="row gx-5 needs-validation" name="form" onsubmit="return validate()"  novalidate style="overflow: hidden;">
 						<div class="row gx-5 needs-validation">
 
 							<label class="form-label" style="text-align: left; padding-top: .5rem; padding-bottom: 1rem; font-size: 1rem; font-weight: bold;"><i class='bx bxs-edit'></i> Admin Information<p>Last update: <?php  echo $employee_last_update  ?></p></label>
@@ -189,7 +189,7 @@ $employee_last_update = $employee["updated_at"];
 
 							<div class="col-md-6">
 								<label for="position" class="form-label">Position<span> *</span></label>
-								<input  type="text" class="form-control" autocapitalize="on" maxlength="20" autocomplete="off" name="Position" id="position" value="<?php echo $employee_position ?>" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required>
+								<input onkeyup="this.value = this.value.toUpperCase();"  type="text" class="form-control" autocapitalize="on" maxlength="20" autocomplete="off" name="Position" id="position" value="<?php echo $employee_position ?>" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required>
 								<div class="invalid-feedback">
 								Please provide a Position
 								</div>
@@ -214,7 +214,7 @@ $employee_last_update = $employee["updated_at"];
 						</div>
 
 						<div class="addBtn">
-                            <button type="button" onclick="location.href='teachers-data'" class="back">Back</button>
+                            <button type="button" onclick="location.href='admin-data'" class="back">Back</button>
 							<button type="submit" class="primary add" name="btn-update" id="btn-update" onclick="return IsEmpty(); sexEmpty();">Update</button>
 						</div>
 					</form>
