@@ -38,9 +38,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $pdoExec = $pdoResult->execute(array(":LRN"=>$LRN,));
     $row = $pdoResult->fetch(PDO::FETCH_ASSOC);
 
-    $pdoQuery = "SELECT * FROM student_advisory WHERE LRN = :LRN AND program = :program AND year_level = :year_level";
+    $pdoQuery = "SELECT * FROM student_advisory WHERE LRN = :LRN AND year_level = :year_level";
     $pdoResult3 = $pdoConnect->prepare($pdoQuery);
-    $pdoExec = $pdoResult3->execute(array(":LRN" => $LRN, ":program" => $program, ":year_level" => $year_level));
+    $pdoExec = $pdoResult3->execute(array(":LRN" => $LRN, ":year_level" => $year_level));
     $pdoResult3->fetch(PDO::FETCH_ASSOC);
 
     if($pdoResult->rowCount() > 0){
