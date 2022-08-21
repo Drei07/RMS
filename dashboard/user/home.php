@@ -81,7 +81,7 @@ $Grade12 		= "Grade12";
 				<span><?php echo $row['userLast_Name']; ?>, <?php echo $row['userFirst_Name']; ?></i></span>
 			</div>	
 			<div class="profile">
-				<img src="../../src/img/<?php echo $profile_user  ?>" alt="">
+				<img src="../../src/img/<?php echo $profile_user  ?>" alt="user-profile">
 				<ul class="profile-link">
 					<li><a href="profile"><i class='bx bxs-user-circle icon' ></i> Profile</a></li>
 					<li><a href="settings"><i class='bx bxs-cog' ></i> Settings</a></li>
