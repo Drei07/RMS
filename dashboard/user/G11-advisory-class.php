@@ -124,7 +124,7 @@ $profile_user 	= $row['userProfile']
 							?>
 								<div class="card">
 									<div class="head" style="background-color: <?php echo $row['advisory_class_color']; ?>;">
-									<a href="controller/delete-class-controller?teacherID=<?php echo $uniqueId?>&id=<?php echo $row['Id'] ?>&year_level=<?php echo $row['year_level'] ?>" class="delete"><i class='bx bxs-trash dot' style="color:<?php echo $row['advisory_class_color']; ?>;"></i></a>
+									<a href="controller/delete-advisory-controller?teacherID=<?php echo $uniqueId?>&id=<?php echo $row['Id'] ?>&year_level=<?php echo $row['year_level'] ?>" class="delete"><i class='bx bxs-trash dot' style="color:<?php echo $row['advisory_class_color']; ?>;"></i></a>
 										<div>											
 											<h2>SECTION: <?php echo $row['section_name']; ?></h2>
 											<?php
