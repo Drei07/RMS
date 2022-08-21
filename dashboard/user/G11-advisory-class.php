@@ -290,27 +290,6 @@ $profile_user 	= $row['userProfile']
 
 	<script>
 
-		//live fetch data---------------------------------------------------------------------------------------
-
-		function loadXMLDoc() {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("result").innerHTML =
-			this.responseText;
-			}
-		};
-		xhttp.open("GET", "data-table/G11-advisory-class-first-data-table.php", true);
-		xhttp.send();
-		}
-
-		setInterval(function(){
-			loadXMLDoc();
-			// .1sec
-		},1000);
-
-		window.onload = loadXMLDoc;
-
 		// Form---------------------------------------------------------------------------------------
 				(function () {
 			'use strict'
