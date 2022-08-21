@@ -96,7 +96,7 @@ $program = $program_data['programs'];
 	<section id="sidebar" class="hide">
 		<a href="#" class="brand"><img src="../../src/img/<?php echo $logo ?>" alt="logo" class="brand-img"></i>&nbsp;&nbsp;SVNHS</a>
 		<ul class="side-menu">
-			<li><a href="#" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<li><a href="home" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
 			<li class="divider" data-text="Class">Class</li>
 			<li>
 				<a href="#"><i class='bx bxs-chalkboard icon' ></i> Advisory <i class='bx bx-chevron-right icon-right' ></i></a>
