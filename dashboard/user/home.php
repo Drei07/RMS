@@ -157,9 +157,14 @@ $Grade12 		= "Grade12";
 					<div class="head">
 						<div>
 							<?php
-								$pdoQuery = "SELECT * FROM student";
+								$pdoQuery = "SELECT * FROM advisory WHERE year_level = :year_level AND teacherId = :teacherId";
 								$pdoResult1 = $pdoConnect->prepare($pdoQuery);
-								$pdoResult1->execute();
+								$pdoResult1->execute(array
+								( 
+									":year_level"=>$Grade11, 
+									":teacherId"=>$uniqueId,  
+									
+								));
 
 								$count = $pdoResult1->rowCount();
 
@@ -167,7 +172,7 @@ $Grade12 		= "Grade12";
 								"
 									<h2>$count</h2>
 								";
-							?> 
+							?>
 							<p>G11 Advisory</p>
 						</div>
 						<i class='bx bxs-book-reader icon' ></i>
@@ -177,10 +182,15 @@ $Grade12 		= "Grade12";
 				<div class="dashboard-card">
 					<div class="head">
 						<div>
-							<!-- <?php
-								$pdoQuery = "SELECT * FROM academic_programs";
+							<?php
+								$pdoQuery = "SELECT * FROM advisory WHERE year_level = :year_level AND teacherId = :teacherId";
 								$pdoResult1 = $pdoConnect->prepare($pdoQuery);
-								$pdoResult1->execute();
+								$pdoResult1->execute(array
+								( 
+									":year_level"=>$Grade12, 
+									":teacherId"=>$uniqueId,  
+									
+								));
 
 								$count = $pdoResult1->rowCount();
 
@@ -188,7 +198,7 @@ $Grade12 		= "Grade12";
 								"
 									<h2>$count</h2>
 								";
-							?> -->
+							?>
 							<p>G12 Advisory</p>
 						</div>
 						<i class='bx bxs-book-reader icon' ></i>

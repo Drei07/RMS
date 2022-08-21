@@ -373,9 +373,9 @@ nav .profile .profile-link a:hover {
 }
 
 nav .dropdown span{
-	font-size: 15px;
+	font-size: 14px;
 	color: var(--light-black);
-	font-weight: 500;
+	font-weight: 700;
 }
 
 /* NAVBAR */
