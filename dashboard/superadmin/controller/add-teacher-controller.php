@@ -37,6 +37,7 @@ if(isset($_POST['btn-register'])) {
       $_SESSION['status'] = "Email already taken. Please try another one.";
       $_SESSION['status_code'] = "error";
       $_SESSION['status_timer'] = 100000;
+      header('Location: ../add-teachers');
     }
     else
     {

@@ -301,8 +301,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 		const href = $(this).attr('href')
 
 				swal({
+				title: "Delete?",
 				text: "Do you want to delete?",
-				icon: "info",
+				icon: "warning",
 				buttons: true,
 				dangerMode: true,
 			})
