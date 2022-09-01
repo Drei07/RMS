@@ -166,7 +166,7 @@ $program = $program_data['programs'];
 
 			</ul>
 
-			<a href="../excel/SF10?programId=<?php echo $programID?>&LRN=<?php echo $LRN ?>" class="print"><i class='bx bx-printer printer'></i></a>
+			<a href="controller/print-verify-controller?programId=<?php echo $programID?>&LRN=<?php echo $LRN ?>" class="print"><i class='bx bx-printer printer'></i></a>
 
 			<!-- GRADE 11 REPORT CARD -->
 
