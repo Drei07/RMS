@@ -110,325 +110,325 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				<li class="divider">|</li>
 				<li><a href="" class="active">Add Students</a></li>
 			</ul>
-            <section class="data-form">
-				<div class="header"></div>
-				<div class="registration">
-					<form action="controller/add-student-controller.php" method="POST" class="row gx-5 needs-validation" name="form" onsubmit="return validate()"  novalidate style="overflow: hidden;">
-						<div class="row gx-5 needs-validation">
-							<!-- Student Information -->
-							<label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Student Information</label>
+				<section class="data-form">
+					<div class="header"></div>
+					<div class="registration">
+						<form action="controller/add-student-controller.php" method="POST" class="row gx-5 needs-validation" name="form" onsubmit="return validate()"  novalidate style="overflow: hidden;">
+							<div class="row gx-5 needs-validation">
+								<!-- Student Information -->
+								<label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Student Information</label>
 
-                            <div class="col-md-6">
-								<label for="lrn" class="form-label">LRN<span> *</span></label>
-								<input type="text" class="form-control" autocomplete="off" name="LRN" id="lrn" required >
-								<div class="invalid-feedback">
-								Please provide a LRN.
+								<div class="col-md-6">
+									<label for="lrn" class="form-label">LRN<span> *</span></label>
+									<input type="text" class="form-control" autocomplete="off" name="LRN" id="lrn" required >
+									<div class="invalid-feedback">
+									Please provide a LRN.
+									</div>
 								</div>
+
+								<div class="col-md-6">
+									<label for="student_id" class="form-label">Student ID<span> *</span></label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="StudentId" id="student_id"  required>
+									<div class="invalid-feedback">
+									Please provide a Student ID.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="first_name" class="form-label">First Name<span> *</span></label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="FName" id="first_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required>
+									<div class="invalid-feedback">
+									Please provide a First Name.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="middle_name" class="form-label">Middle Name</label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="MName" id="middle_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
+									<div class="invalid-feedback">
+									Please provide a Middle Name.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="last_name" onkeyup="this.value = this.value.toUpperCase();" class="form-label">Last Name<span> *</span></label>
+									<input type="text" class="form-control" autocomplete="off" name="LName" id="last_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required >
+									<div class="invalid-feedback">
+									Please provide a Last Name.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="sex" class="form-label">Sex<span> *</span></label>
+									<select class="form-select form-control"  name="Sex"  maxlength="6" autocomplete="off" id="sex" required>
+									<option selected disabled value="">Select...</option>
+									<option value="MALE">MALE</option>
+									<option value="FEMALE ">FEMALE</option>
+									</select>
+									<div class="invalid-feedback">
+										Please select a valid Sex.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="birthdate" class="form-label">Birth Date<span> *</span></label>
+									<input type="date" class="form-control" autocapitalize="off" autocomplete="off" name="BirthDate" id="birthdate" maxlength="10" pattern="^[a-zA-Z0-9]+@gmail\.com$"  required placeholder="Ex: mm/dd/yyyy" onkeyup="getAgeVal(0)" onblur="getAgeVal(0);">
+									<div class="invalid-feedback">
+									Please provide a Birth Date.
+									</div>
+								</div>
+
+								<div class="col-md-6" style="display: none;">
+									<label for="age" class="form-label">Age<span style="font-size:9px; color:red;">( auto-generated )</span></label>
+									<input type="number" class="form-control" autocapitalize="off" autocomplete="off"  name="Age" id="age" required >
+									<div class="invalid-feedback">
+									Please provide your Age.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="Pbirth" class="form-label">Place Of Birth</label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" maxlength="20" autocomplete="off" name="PBirth" id="Pbirth" >
+									<div class="invalid-feedback">
+									Please provide a Place of Birth.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="CivilStatus" class="form-label">Civil Status<span> *</span></label>
+									<select class="form-select form-control"  name="CStatus"  maxlength="6" autocomplete="off" id="CivilStatus" required>
+									<option selected disabled value="">Select...</option>
+									<option value="SINGLE">SINGLE</option>
+									<option value="MARRIED">MARRIED</option>
+									<option value="SEPERATED">SEPERATED</option>
+									<option value=">WIDOW/WIDOWER">WIDOW/WIDOWER</option>
+									<option value="ANULLED">ANULLED</option>
+									<option value="SOLO PARENT">SOLO PARENT</option>
+									</select>
+									<div class="invalid-feedback">
+										Please select a valid Civil Status.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="nationality" class="form-label">Nationality<span> *</span></label>
+									<input type="text"  class="form-control country-select" maxlength="20" autocomplete="off" name="Nationality" id="nationality"  required>
+									<div class="invalid-feedback">
+									Please provide a Nationality.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="religion" class="form-label">Religion<span> *</span></label>
+									<select class="form-select form-control"  name="Religion"  maxlength="6" autocomplete="off" id="religion" required>
+									<option selected disabled value="">Select...</option>
+									<option value="ROMAN CATHOLIC">Roman Catholic</option>
+									<option value="INC">INC</option>
+									<option value="CHRISTIAN">Christian</option>
+									<option value="ISLAM">Islam</option>
+									<option value="BUDDHISM">Buddhism</option>
+									<option value="PROTESTANT">Protestant</option>
+									<option value="METHODIST">Methodist</option>
+									<option value="ADVENTIST">Adventist</option>
+									<option value="INDEPENDENT">independent</option>
+									<option value="EVANGELICAL">Evangelical</option>
+									<option value="JENOVAH'S-WINESSES">Jehovah's-Witnesses</option>
+									<option value="JIL">JIL</option>
+									<option value="LUTHERAN">Lutheran</option>
+									<option value="ORTHODOX">Orthodox</option>
+									<option value="PENTECOSTAL">Pentecostal</option>
+									<option value="PRESBYTERIANISM">Presbyterianism</option>
+									<option value="LATTER-DAY">Latter-Day</option>
+									<option value="UCCP">UCCP</option>
+									<option value="KJC">KJC</option>
+									<option value="BAPTIST">Baptist</option>
+									<option value="ANGELICAN-EPISCOPALIAN">Angelican-Episcopalian</option>
+									<option value="OTHERS">Others</option>
+									</select>
+									<div class="invalid-feedback">
+										Please select a valid Religion.
+									</div>
+								</div>
+
+								<div class="col-md-6" >
+									<label for="phone_number" class="form-label">Phone Number</label>
+									<div class="input-group flex-nowrap">
+									<span class="input-group-text" id="addon-wrapping">+63</span>
+									<input type="text" class="form-control numbers"  autocapitalize="off" inputmode="numeric" autocomplete="off" name="PNumber" id="phone_number" minlength="10" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  placeholder="10-digit number">
+									</div>
+								</div>
+								
+								<div class="col-md-6">
+									<label for="email" class="form-label">Email</label>
+									<input type="email" class="form-control" autocapitalize="off" autocomplete="off" name="Email" id="email" placeholder="Ex. juan@email.com">
+									<div class="invalid-feedback">
+									Please provide a valid Email.
+									</div>
+								</div>
+								<!-- Residential Address -->
+								<label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Residential Address</label>
+								
+								<div class="col-md-6">
+									<label for="province" class="form-label">Province<span> *</span></label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control"  autocomplete="off" name="Province" id="province" required>
+									<div class="invalid-feedback">
+										Please select a valid Province.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="city" class="form-label">City/Municipality<span> *</span></label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control"  autocomplete="off" name="City" id="city" required>
+									<div class="invalid-feedback">
+										Please select a valid City.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="barangay" onkeyup="this.value = this.value.toUpperCase();" class="form-label">Barangay<span> *</span></label>
+									<input type="text" class="form-control"  autocomplete="off" name="Barangay" id="barangay" required>
+									<div class="invalid-feedback">
+										Please select a valid Barangay.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="street" onkeyup="this.value = this.value.toUpperCase();" class="form-label">Street</label>
+									<input type="text" class="form-control"  autocomplete="off" name="Street" id="street" >
+									<div class="invalid-feedback">
+										Please select a valid Street.
+									</div>
+								</div>
+								<!-- Mother Information -->
+								<label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Mother Information<span> (maiden name)</span></label>
+
+								<div class="col-md-6">
+									<label for="mother_first_name" class="form-label">First Name</label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Mother-FName" id="mother_first_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" >
+									<div class="invalid-feedback">
+									Please provide a First Name.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="mother_middle_name" class="form-label">Middle Name</label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Mother-MName" id="mother_middle_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
+									<div class="invalid-feedback">
+									Please provide a Middle Name.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="mother_last_name" class="form-label">Last Name</label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Mother-LName" id="mother_last_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"  >
+									<div class="invalid-feedback">
+									Please provide a Last Name.
+									</div>
+								</div>
+
+								<div class="col-md-6" >
+									<label for="mother_phone_number" class="form-label">Phone Number</label>
+									<div class="input-group flex-nowrap">
+									<span class="input-group-text" id="addon-wrapping">+63</span>
+									<input type="text" class="form-control numbers"  autocapitalize="off" inputmode="numeric" autocomplete="off" name="Mother-PNumber" id="mother_phone_number" minlength="10" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  placeholder="10-digit number">
+									</div>
+								</div>
+
+								<!-- Father Information -->
+								<label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Father Information</label>
+
+								<div class="col-md-6">
+									<label for="father_first_name" class="form-label">First Name</label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Father-FName" id="father_first_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" >
+									<div class="invalid-feedback">
+									Please provide a First Name.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="father_middle_name" class="form-label">Middle Name</label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Father-MName" id="father_middle_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
+									<div class="invalid-feedback">
+									Please provide a Middle Name.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="father_last_name" class="form-label">Last Name</label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Father-LName" id="father_last_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"  >
+									<div class="invalid-feedback">
+									Please provide a Last Name.
+									</div>
+								</div>
+
+								<div class="col-md-6" >
+									<label for="father_phone_number" class="form-label">Phone Number</label>
+									<div class="input-group flex-nowrap">
+									<span class="input-group-text" id="addon-wrapping">+63</span>
+									<input type="text" class="form-control numbers"  autocapitalize="off" inputmode="numeric" autocomplete="off" name="Father-PNumber" id="father_phone_number" minlength="10" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  placeholder="10-digit number">
+									</div>
+								</div>
+
+								<!-- Emergency Information -->
+								<label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Emergency Information</label>
+
+								<div class="col-md-6">
+									<label for="ECP" class="form-label">Emergency Contact Person</label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control"  autocomplete="off" name="Emergency_Contact_Person" id="ECP" >
+									<div class="invalid-feedback">
+									Please provide a Emergency Contact Person.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="EAddress" class="form-label">Emergency Address</label>
+									<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control"  autocomplete="off" name="Emergency_Address" id="EAddress" >
+									<div class="invalid-feedback">
+									Please provide a Emergency Address.
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<label for="EMN" class="form-label">Emergency Mobile No.</label>
+									<div class="input-group flex-nowrap">
+									<span class="input-group-text" id="addon-wrapping">+63</span>
+									<input type="text" class="form-control numbers"  autocapitalize="off" inputmode="numeric" autocomplete="off" name="Emergency_Mobile_No" id="EMN" minlength="10" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  placeholder="10-digit number">
+									</div>
+								</div>
+
+								<!-- Select Program -->
+								<label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Select Program</label>	
+								
+								<div class="col-md-6">
+									<label for="programs" class="form-label">Programs<span> *</span></label>
+									<select class="form-select form-control"  name="Programs"  autocomplete="off" id="programs" required>
+									<option selected disabled value="">Select Programs</option>
+										<?php
+											$pdoQuery = "SELECT * FROM academic_programs";
+											$pdoResult = $pdoConnect->prepare($pdoQuery);
+											$pdoResult->execute();
+											
+												while($academic_programs=$pdoResult->fetch(PDO::FETCH_ASSOC)){
+													?>
+													<option value="<?php echo $academic_programs['programID']; ?>">
+													<?php echo $academic_programs['programs'] ?></option>
+													<?php
+												}
+										?>
+									</select>
+									<div class="invalid-feedback">
+										Please select a valid Programs.
+									</div>
+								</div>
+
 							</div>
 
-							<div class="col-md-6">
-								<label for="student_id" class="form-label">Student ID<span> *</span></label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="StudentId" id="student_id"  required>
-								<div class="invalid-feedback">
-								Please provide a Student ID.
-								</div>
+							<div class="addBtn">
+								<button type="submit" class="btn-primary" name="btn-register" id="btn-register" onclick="return IsEmpty(); sexEmpty();">Submit</button>
 							</div>
-
-							<div class="col-md-6">
-								<label for="first_name" class="form-label">First Name<span> *</span></label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="FName" id="first_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required>
-								<div class="invalid-feedback">
-								Please provide a First Name.
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<label for="middle_name" class="form-label">Middle Name</label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="MName" id="middle_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
-								<div class="invalid-feedback">
-								Please provide a Middle Name.
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<label for="last_name" onkeyup="this.value = this.value.toUpperCase();" class="form-label">Last Name<span> *</span></label>
-								<input type="text" class="form-control" autocomplete="off" name="LName" id="last_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required >
-								<div class="invalid-feedback">
-								Please provide a Last Name.
-								</div>
-							</div>
-
-                            <div class="col-md-6">
-                                <label for="sex" class="form-label">Sex<span> *</span></label>
-                                <select class="form-select form-control"  name="Sex"  maxlength="6" autocomplete="off" id="sex" required>
-                                <option selected disabled value="">Select...</option>
-                                <option value="MALE">MALE</option>
-                                <option value="FEMALE ">FEMALE</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid Sex.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="birthdate" class="form-label">Birth Date<span> *</span></label>
-                                <input type="date" class="form-control" autocapitalize="off" autocomplete="off" name="BirthDate" id="birthdate" maxlength="10" pattern="^[a-zA-Z0-9]+@gmail\.com$"  required placeholder="Ex: mm/dd/yyyy" onkeyup="getAgeVal(0)" onblur="getAgeVal(0);">
-                                <div class="invalid-feedback">
-                                Please provide a Birth Date.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6" style="display: none;">
-                                <label for="age" class="form-label">Age<span style="font-size:9px; color:red;">( auto-generated )</span></label>
-                                <input type="number" class="form-control" autocapitalize="off" autocomplete="off"  name="Age" id="age" required >
-                                <div class="invalid-feedback">
-                                Please provide your Age.
-                                </div>
-                            </div>
-
-							<div class="col-md-6">
-								<label for="Pbirth" class="form-label">Place Of Birth</label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" maxlength="20" autocomplete="off" name="PBirth" id="Pbirth" >
-								<div class="invalid-feedback">
-								Please provide a Place of Birth.
-								</div>
-							</div>
-
-                            <div class="col-md-6">
-                                <label for="CivilStatus" class="form-label">Civil Status<span> *</span></label>
-                                <select class="form-select form-control"  name="CStatus"  maxlength="6" autocomplete="off" id="CivilStatus" required>
-                                <option selected disabled value="">Select...</option>
-                                <option value="SINGLE">SINGLE</option>
-                                <option value="MARRIED">MARRIED</option>
-                                <option value="SEPERATED">SEPERATED</option>
-                                <option value=">WIDOW/WIDOWER">WIDOW/WIDOWER</option>
-                                <option value="ANULLED">ANULLED</option>
-                                <option value="SOLO PARENT">SOLO PARENT</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid Civil Status.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-								<label for="nationality" class="form-label">Nationality<span> *</span></label>
-								<input type="text"  class="form-control country-select" maxlength="20" autocomplete="off" name="Nationality" id="nationality"  required>
-								<div class="invalid-feedback">
-								Please provide a Nationality.
-								</div>
-							</div>
-
-                            <div class="col-md-6">
-                                <label for="religion" class="form-label">Religion<span> *</span></label>
-                                <select class="form-select form-control"  name="Religion"  maxlength="6" autocomplete="off" id="religion" required>
-                                <option selected disabled value="">Select...</option>
-                                <option value="ROMAN CATHOLIC">Roman Catholic</option>
-                                <option value="INC">INC</option>
-                                <option value="CHRISTIAN">Christian</option>
-                                <option value="ISLAM">Islam</option>
-                                <option value="BUDDHISM">Buddhism</option>
-                                <option value="PROTESTANT">Protestant</option>
-                                <option value="METHODIST">Methodist</option>
-                                <option value="ADVENTIST">Adventist</option>
-                                <option value="INDEPENDENT">independent</option>
-                                <option value="EVANGELICAL">Evangelical</option>
-                                <option value="JENOVAH'S-WINESSES">Jehovah's-Witnesses</option>
-                                <option value="JIL">JIL</option>
-                                <option value="LUTHERAN">Lutheran</option>
-                                <option value="ORTHODOX">Orthodox</option>
-                                <option value="PENTECOSTAL">Pentecostal</option>
-                                <option value="PRESBYTERIANISM">Presbyterianism</option>
-                                <option value="LATTER-DAY">Latter-Day</option>
-                                <option value="UCCP">UCCP</option>
-                                <option value="KJC">KJC</option>
-                                <option value="BAPTIST">Baptist</option>
-                                <option value="ANGELICAN-EPISCOPALIAN">Angelican-Episcopalian</option>
-                                <option value="OTHERS">Others</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid Religion.
-                                </div>
-                            </div>
-
-							<div class="col-md-6" >
-								<label for="phone_number" class="form-label">Phone Number</label>
-								<div class="input-group flex-nowrap">
-								<span class="input-group-text" id="addon-wrapping">+63</span>
-								<input type="text" class="form-control numbers"  autocapitalize="off" inputmode="numeric" autocomplete="off" name="PNumber" id="phone_number" minlength="10" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  placeholder="10-digit number">
-								</div>
-							</div>
-							
-							<div class="col-md-6">
-								<label for="email" class="form-label">Email</label>
-								<input type="email" class="form-control" autocapitalize="off" autocomplete="off" name="Email" id="email" placeholder="Ex. juan@email.com">
-								<div class="invalid-feedback">
-								Please provide a valid Email.
-								</div>
-							</div>
-                            <!-- Residential Address -->
-                            <label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Residential Address</label>
-                            
-                            <div class="col-md-6">
-                                <label for="province" class="form-label">Province<span> *</span></label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control"  autocomplete="off" name="Province" id="province" required>
-                                <div class="invalid-feedback">
-                                    Please select a valid Province.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="city" class="form-label">City/Municipality<span> *</span></label>
-                                <input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control"  autocomplete="off" name="City" id="city" required>
-                                <div class="invalid-feedback">
-                                    Please select a valid City.
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="barangay" onkeyup="this.value = this.value.toUpperCase();" class="form-label">Barangay<span> *</span></label>
-								<input type="text" class="form-control"  autocomplete="off" name="Barangay" id="barangay" required>
-                                <div class="invalid-feedback">
-                                    Please select a valid Barangay.
-                                </div>
-                            </div>
-
-							<div class="col-md-6">
-                                <label for="street" onkeyup="this.value = this.value.toUpperCase();" class="form-label">Street</label>
-								<input type="text" class="form-control"  autocomplete="off" name="Street" id="street" >
-                                <div class="invalid-feedback">
-                                    Please select a valid Street.
-                                </div>
-                            </div>
-							<!-- Mother Information -->
-							<label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Mother Information<span> (maiden name)</span></label>
-
-							<div class="col-md-6">
-								<label for="mother_first_name" class="form-label">First Name</label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Mother-FName" id="mother_first_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" >
-								<div class="invalid-feedback">
-								Please provide a First Name.
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<label for="mother_middle_name" class="form-label">Middle Name</label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Mother-MName" id="mother_middle_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
-								<div class="invalid-feedback">
-								Please provide a Middle Name.
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<label for="mother_last_name" class="form-label">Last Name</label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Mother-LName" id="mother_last_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"  >
-								<div class="invalid-feedback">
-								Please provide a Last Name.
-								</div>
-							</div>
-
-							<div class="col-md-6" >
-								<label for="mother_phone_number" class="form-label">Phone Number</label>
-								<div class="input-group flex-nowrap">
-								<span class="input-group-text" id="addon-wrapping">+63</span>
-								<input type="text" class="form-control numbers"  autocapitalize="off" inputmode="numeric" autocomplete="off" name="Mother-PNumber" id="mother_phone_number" minlength="10" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  placeholder="10-digit number">
-								</div>
-							</div>
-
-							<!-- Father Information -->
-							<label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Father Information</label>
-
-							<div class="col-md-6">
-								<label for="father_first_name" class="form-label">First Name</label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Father-FName" id="father_first_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" >
-								<div class="invalid-feedback">
-								Please provide a First Name.
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<label for="father_middle_name" class="form-label">Middle Name</label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Father-MName" id="father_middle_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)">
-								<div class="invalid-feedback">
-								Please provide a Middle Name.
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<label for="father_last_name" class="form-label">Last Name</label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control" autocomplete="off" name="Father-LName" id="father_last_name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"  >
-								<div class="invalid-feedback">
-								Please provide a Last Name.
-								</div>
-							</div>
-
-							<div class="col-md-6" >
-								<label for="father_phone_number" class="form-label">Phone Number</label>
-								<div class="input-group flex-nowrap">
-								<span class="input-group-text" id="addon-wrapping">+63</span>
-								<input type="text" class="form-control numbers"  autocapitalize="off" inputmode="numeric" autocomplete="off" name="Father-PNumber" id="father_phone_number" minlength="10" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  placeholder="10-digit number">
-								</div>
-							</div>
-
-                            <!-- Emergency Information -->
-                            <label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Emergency Information</label>
-
-                            <div class="col-md-6">
-								<label for="ECP" class="form-label">Emergency Contact Person</label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control"  autocomplete="off" name="Emergency_Contact_Person" id="ECP" >
-								<div class="invalid-feedback">
-								Please provide a Emergency Contact Person.
-								</div>
-							</div>
-
-                            <div class="col-md-6">
-								<label for="EAddress" class="form-label">Emergency Address</label>
-								<input type="text" onkeyup="this.value = this.value.toUpperCase();" class="form-control"  autocomplete="off" name="Emergency_Address" id="EAddress" >
-								<div class="invalid-feedback">
-								Please provide a Emergency Address.
-								</div>
-							</div>
-
-                            <div class="col-md-6">
-								<label for="EMN" class="form-label">Emergency Mobile No.</label>
-								<div class="input-group flex-nowrap">
-								<span class="input-group-text" id="addon-wrapping">+63</span>
-								<input type="text" class="form-control numbers"  autocapitalize="off" inputmode="numeric" autocomplete="off" name="Emergency_Mobile_No" id="EMN" minlength="10" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  placeholder="10-digit number">
-								</div>
-							</div>
-
-							<!-- Select Program -->
-							<label class="form-label" style="text-align: left; padding-top: 2rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;">Select Program</label>	
-							
-							<div class="col-md-6">
-								<label for="programs" class="form-label">Programs<span> *</span></label>
-								<select class="form-select form-control"  name="Programs"  autocomplete="off" id="programs" required>
-								<option selected disabled value="">Select Programs</option>
-									<?php
-										$pdoQuery = "SELECT * FROM academic_programs";
-										$pdoResult = $pdoConnect->prepare($pdoQuery);
-										$pdoResult->execute();
-										
-											while($academic_programs=$pdoResult->fetch(PDO::FETCH_ASSOC)){
-												?>
-												<option value="<?php echo $academic_programs['programID']; ?>">
-												<?php echo $academic_programs['programs'] ?></option>
-												<?php
-											}
-									?>
-								</select>
-								<div class="invalid-feedback">
-									Please select a valid Programs.
-								</div>
-							</div>
-
-						</div>
-
-						<div class="addBtn">
-							<button type="submit" class="btn-primary" name="btn-register" id="btn-register" onclick="return IsEmpty(); sexEmpty();">Submit</button>
-						</div>
-					</form>
-                </div>
-            </section>
+						</form>
+					</div>
+				</section>
 		</main>
 		<!-- MAIN -->
 	</section>

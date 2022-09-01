@@ -25,6 +25,8 @@ $student_last_name      =  $student_data['last_name'];
 $student_firt_name      =  $student_data['first_name'];
 $student_middle_name    =  $student_data['middle_name'];
 
+$file_name      =      ($student_last_name)."-".($student_firt_name)."-".($student_middle_name); 
+
 $student_birthdate      =  $student_data['birth_date'];
 $convert_birthdate      =  date("d/m/Y", strtotime($student_birthdate));
 
@@ -656,7 +658,7 @@ $G12_second_sem_currentRow  = 54;//Start of the Row for 2nd Semester G12
 
 
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-header('Content-Disposition: attachment;filename="SF10.xlsx"');
+header('Content-Disposition: attachment;filename="SF10-'.$file_name.'.xlsx"');
 
 $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
