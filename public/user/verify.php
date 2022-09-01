@@ -1,5 +1,7 @@
 <?php
 include_once '../../dashboard/user/authentication/user-verify.php';
+include_once '../../dashboard/superadmin/controller/select-settings-coniguration-controller.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +10,7 @@ include_once '../../dashboard/user/authentication/user-verify.php';
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Verify Account</title>
-	<link rel="shortcut icon" href="../../src/img/favicon.ico.png">
+	<link rel="shortcut icon" href="../../src/img/<?php echo $logo ?>">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../../src/css/login.css?v=<?php echo time(); ?>">
 </head>
