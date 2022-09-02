@@ -93,7 +93,7 @@ $profile_user 	= $row['userProfile']
 
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">G11 Advisory</h1>
+			<h1 class="title">G12 Advisory</h1>
             <ul class="breadcrumbs">
 				<li><a href="home" >Home</a></li>
 				<li class="divider">|</li>
