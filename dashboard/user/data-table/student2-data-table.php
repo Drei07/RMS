@@ -43,13 +43,13 @@ else
 }
 
 $query = "
-SELECT * FROM student 
+SELECT * FROM student WHERE program = :program
 ";
 $output = '';
 if($_POST['query'] != '')
 {
   $query .= '
-  WHERE LRN LIKE "%'.str_replace(' ', '%', $_POST['query']).'%"
+  AND LRN LIKE "%'.str_replace(' ', '%', $_POST['query']).'%"
   ';
 }
 
@@ -57,7 +57,7 @@ $query .= 'ORDER BY last_name ASC ';
 
 
 $statement = $pdoConnect->prepare($query);
-$statement->execute();
+$statement->execute(array(":program" => $program));
 $total_data = $statement->rowCount();
 
 

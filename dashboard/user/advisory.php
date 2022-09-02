@@ -23,10 +23,10 @@ $pdoResult = $pdoConnect->prepare($pdoQuery);
 $pdoExec = $pdoResult->execute(array(":advisoryId" => $advisoryId));
 $advisory_data = $pdoResult->fetch(PDO::FETCH_ASSOC);
 
-$advisory_section_name     = $advisory_data['section_name'];
-$advisory_color    = $advisory_data['advisory_class_color'];
-$advisory_program 	= $advisory_data['program'];
-$advisory_year		=$advisory_data['year_level'];
+$advisory_section_name     	= $advisory_data['section_name'];
+$advisory_color    			= $advisory_data['advisory_class_color'];
+$advisory_program 			= $advisory_data['program'];
+$advisory_year				=$advisory_data['year_level'];
 
 if($advisory_year == "Grade11"){
 	$location = "G11-advisory-class";
