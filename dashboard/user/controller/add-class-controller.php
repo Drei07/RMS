@@ -37,9 +37,9 @@ $G12 = "Grade12";
 
         $subject_code = $subject_data['subjectId'];
 
-        $pdoQuery = "SELECT * FROM classes WHERE subject_name = :subject_name AND teacherId = :teacherId AND program = :program";
+        $pdoQuery = "SELECT * FROM classes WHERE subject_name = :subject_name AND teacherId = :teacherId AND program = :program AND status = :status";
         $pdoResult3 = $pdoConnect->prepare($pdoQuery);
-        $pdoExec = $pdoResult3->execute(array(":subject_name"=>$subject_code, ":teacherId"=>$teacherID, ":program"=>$program));
+        $pdoExec = $pdoResult3->execute(array(":subject_name"=>$subject_code, ":teacherId"=>$teacherID, ":program"=>$program, ":status" => "active"));
         $classes_data = $pdoResult3->fetch(PDO::FETCH_ASSOC);
 
         if($pdoResult3->rowCount() > 0){
