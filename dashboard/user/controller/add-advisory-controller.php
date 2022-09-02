@@ -27,6 +27,30 @@ $G12 = "Grade12";
         $color              = trim($_POST['Color']);
         $school_year        = trim($_POST['school_year']);
 
+        $pdoQuery = "SELECT * FROM advisory WHERE section_name = :section_name AND teacherId = :teacherId AND program = :program AND year_level = :year_level AND school_year = :school_year AND status = :status";
+        $pdoResult3 = $pdoConnect->prepare($pdoQuery);
+        $pdoExec = $pdoResult3->execute(array(":section_name"=>$section_name, ":teacherId"=>$teacherID, ":program"=>$program, ":year_level"=>$year_level, ":school_year"=>$school_year,  ":status" => "active"));
+        $classes_data = $pdoResult3->fetch(PDO::FETCH_ASSOC);
+
+        if($pdoResult3->rowCount() > 0){
+            $_SESSION['status_title'] = "Oops!";
+            $_SESSION['status'] = "Advisory Class is already create. Please try another one.";
+            $_SESSION['status_code'] = "error";
+            $_SESSION['status_timer'] = 100000;
+            
+                    
+            if($year_level == $G11)
+            {
+                header('Location: ../G11-advisory-class');
+            }
+            elseif($year_level == $G12)
+            {
+                header('Location: ../G12-advisory-class');
+            }
+        }
+        else
+        {
+
         $pdoQuery = "INSERT INTO advisory (advisoryId, teacherId, section_name, program, year_level, school_year, advisory_class_color) 
                         VALUES (:advisoryId, :teacherId, :section_name, :program, :year_level, :school_year, :advisory_class_color) LIMIT 1";
         $pdoResult = $pdoConnect->prepare($pdoQuery);
@@ -76,6 +100,7 @@ $G12 = "Grade12";
     
           $Result = $pdoConnect->prepare($sql);
           $Exec = $Result->execute();
+        }
     }
     else
     {
