@@ -113,6 +113,7 @@ $G12 = "Grade12";
                 subject_grade_Q3 varchar(145) DEFAULT NULL,
                 subject_grade_Q4 varchar(145) DEFAULT NULL,
                 final_subject_grade_2nd_sem varchar(145) DEFAULT NULL,
+                edit_grade enum('request','edit','decline') NOT NULL DEFAULT 'request',
                 created_at timestamp NOT NULL DEFAULT current_timestamp(),
                 updated_at timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
             )";

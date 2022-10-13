@@ -64,6 +64,19 @@ li {
 	background-color: var(--pending);
 }
 
+/* REQUEST */
+.request {
+	padding: 6px 25px;
+	border-radius: 5px;
+	font-size: 11px;
+	border: none;
+}
+
+.request a{
+	color: var(--light);
+	font-weight: 600;
+}
+
 
 /* VIEW MORE */
 .V {
@@ -1323,6 +1336,15 @@ main .level button{
 .class-modal .modal-content .modal-body .col-md-6 input {
 	font-size: 13px;
 }
+
+.class-modal .modal-content .modal-body .col-md-12 {
+	padding-bottom: .9rem;
+}
+
+.class-modal .modal-content .modal-body .col-md-12 input {
+	font-size: 13px;
+}
+
 
 .class-modal .modal-content .modal-body label span {
 	color: red;

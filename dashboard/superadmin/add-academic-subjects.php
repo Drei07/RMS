@@ -61,7 +61,7 @@ $subject = $_GET["id"];
 					<li><a href="add-admin">Add Admin</a></li>
 				</ul>
 			</li>
-
+			<li><a href="request"><i class='bx bxs-paper-plane icon' ></i> Request</a></li>
 			<li class="divider" data-text="Academic Programs">Academic Programs</li>
 			<li>
 				<a href="#" class="active"><i class='bx bxs-notepad icon' ></i>Programs<i class='bx bx-chevron-right icon-right' ></i></a>

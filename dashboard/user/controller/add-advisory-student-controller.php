@@ -52,7 +52,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     }
     else if ($pdoResult3->rowCount() > 0){
         $_SESSION['status_title'] = "Oops!";
-        $_SESSION['status'] = "Student is already have a section. Please try another one.";
+        $_SESSION['status'] = "Student is already have a advisory. Please try another one.";
         $_SESSION['status_code'] = "error";
         $_SESSION['status_timer'] = 100000;
         header("Location: ../advisory?id=$advisoryId");
@@ -153,7 +153,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
       }
 
       $_SESSION['status_title'] = "Success!";
-      $_SESSION['status'] = "Student is now enrolled to this subject!";
+      $_SESSION['status'] = "Student is now add to your advisory!";
       $_SESSION['status_code'] = "success";
       $_SESSION['status_timer'] = 40000;
       header("Location: ../advisory?id=$advisoryId");

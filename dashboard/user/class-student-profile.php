@@ -15,6 +15,7 @@ $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $profile_user 	= $row['userProfile'];
+$teacherId		= $row['uniqueID'];
 
 $classId        = $_GET['classId'];
 $Id             = $_GET['id'];
@@ -26,6 +27,7 @@ $student = $pdoResult1->fetch(PDO::FETCH_ASSOC);
 
 $studentId      = $student['LRN'];
 $class_semester	= $student['semester'];
+$edit_grade		= $student['edit_grade'];
 
 if($class_semester == "First Semester") {
 	$student_grade_1 = $student['subject_grade_Q1'];
@@ -185,15 +187,39 @@ $program = $program_data['programs'];
 						<button class="btn-success change" onclick="Profile()"><i class='bx bxs-user'></i> Profile</button>
 						<?php
 
-							if($student_grade_1 == NULL){
+							if($edit_grade == "request" && $student_grade_1 == NULL){
 						?>
-							<button class="delete2"><a href="controller/delete-class-student.php?LRN=<?php echo $LRN ?>&classId=<?php echo $classId ?>&Id=<?php echo $Id?>" class="btn-delete">Delete Student</a></button>
+
+						<?php
+							}
+							else if ($edit_grade == "request" && $student_grade_1 >= 1){
+						?>
+							<button class="btn-warning change"><a href="controller/add-request-edit-grade-controller.php?teacherId=<?php echo $teacherId ?>&LRN=<?php echo $LRN ?>&classId=<?php echo $classId ?>&Id=<?php echo $Id?>" class="request"> Request for Edit</a></button>
+						<?php
+							}
+							else if ($edit_grade == "edit"){
+						?>
+							<button class="btn-success change" data-bs-toggle="modal" data-bs-target="#gradeModal"><i class='bx bxs-edit'></i> Edit Grade</button>
+						<?php
+							}
+							else if ($edit_grade == "decline"){
+						?>
+							<button class="btn-warning change"><a href="controller/add-request-edit-grade-controller.php?teacherId=<?php echo $teacherId ?>&LRN=<?php echo $LRN ?>&classId=<?php echo $classId ?>&Id=<?php echo $Id?>" class="request"> Request for Edit</a></button>
+						<?php
+							}
+						?>
+
+						
 						<?php
 
+							if($student_grade_1 == NULL){
+						?>
+							<button class="delete2"><a href="controller/delete-class-student.php?LRN=<?php echo $LRN ?>&classId=<?php echo $classId ?>&Id=<?php echo $Id?>" class="btn-delete">Remove Student</a></button>
+						<?php
 							}
 							else if ($student_grade_2 == NULL){
 						?>
-							<button class="delete2"><a href="controller/delete-class-student.php?LRN=<?php echo $LRN ?>&classId=<?php echo $classId ?>&Id=<?php echo $Id?>" class="btn-delete">Delete Student</a></button>						<?php
+							<button class="delete2"><a href="controller/delete-class-student.php?LRN=<?php echo $LRN ?>&classId=<?php echo $classId ?>&Id=<?php echo $Id?>" class="btn-delete">Remove Student</a></button>						<?php
 							}
 							else{
 						?>
@@ -618,17 +644,13 @@ $program = $program_data['programs'];
 									<div class="col-md-12" style="opacity: 0;">
 										<label for="studentid" class="form-label">Student ID</label>
 										<input disabled type="text" class="form-control">
-										<div class="invalid-feedback">
-										Please provide a Student ID.
-										</div>
+							
 									</div>
 
 									<div class="col-md-12"  style="opacity: 0;">>
 										<label for="lrn" class="form-label">LRN</label>
 										<input disabled  type="text" class="form-control">
-										<div class="invalid-feedback">
-										Please provide a LRN.
-										</div>
+							
 									</div>
 
 									<div class="addBtn">
@@ -649,6 +671,64 @@ $program = $program_data['programs'];
 		</main>
 		<!-- MAIN -->
 	</section>
+
+	<!-- MODALS -->
+	<div class="class-modal">
+		<div class="modal fade" id="gradeModal" tabindex="-1" aria-labelledby="classModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg">
+				<div class="modal-content">
+				<div class="header"></div>
+					<div class="modal-header">
+						<h5 class="modal-title" id="classModalLabel">Edit Subject Grade</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="registration">
+							<form action="controller/update-student-grade-controller.php?classId=<?php echo $classId ?>&LRN=<?php echo $LRN ?>" method="POST" class="row gx-5 needs-validation" name="form" onsubmit="return validate()"  novalidate style="overflow: hidden;">
+								<div class="row gx-5 needs-validation">
+
+									<div class="col-md-12">
+										<label for="Q1" class="form-label">Subject Grade Q1<span> *</span></label>
+										<input type="text" class="form-control" autocapitalize="on" maxlength="15" autocomplete="off" value="<?php echo $student_grade_1 ?>" name="Q1" id="Q1" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required>
+										<div class="invalid-feedback">
+										Please provide a Subject Grade Q1.
+										</div>
+									</div>
+
+									<?php
+										if($student_grade_2 == NULL)
+										{
+									?>
+									<?php
+										}
+										else{
+									?>
+
+
+									<div class="col-md-12">
+										<label for="Q2" class="form-label">Subject Grade Q2<span> *</span></label>
+										<input type="text" class="form-control" autocapitalize="on" maxlength="15" autocomplete="off" value="<?php echo $student_grade_2 ?>" name="Q2" id="Q2" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required>
+										<div class="invalid-feedback">
+										Please provide a Subject Grade Q2.
+										</div>
+									</div>
+
+									<?php
+										}
+									?>
+
+								</div>
+
+								<div class="addBtn">
+									<button type="submit" class="btn-primary" name="btn-update" id="btn-update" onclick="return IsEmpty(); sexEmpty();">Update</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- END NAVBAR -->
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
@@ -696,15 +776,33 @@ $program = $program_data['programs'];
 			document.getElementById('grade2').style.display = 'none';
 		}
 
-        //Delete Profile
+		 //Request edit student grade
+		$('.request').on('click', function(e){
+		e.preventDefault();
+		const href = $(this).attr('href')
 
+				swal({
+				title: "Request?",
+				text: "Are you sure do you want to make request to edit this student grade?",
+				icon: "info",
+				buttons: true,
+				dangerMode: true,
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+				document.location.href = href;
+				}
+			});
+		})
+
+        //Delete Profile
 		$('.btn-delete').on('click', function(e){
 		e.preventDefault();
 		const href = $(this).attr('href')
 
 				swal({
-				title: "Delete?",
-				text: "Are you sure do you want to delete?",
+				title: "Remove?",
+				text: "Are you sure do you want to remove this student?",
 				icon: "warning",
 				buttons: true,
 				dangerMode: true,

@@ -25,9 +25,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 	<link rel="shortcut icon" href="../../src/img/<?php echo $logo ?>">
 	<link rel="stylesheet" href="../../src/node_modules/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../../src/node_modules/boxicons/css/boxicons.min.css">
-	<link rel="stylesheet" href="../../src/node_modules/aos/dist/aos.css" />
+	<link rel="stylesheet" href="../../src/node_modules/aos/dist/aos.css">
     <link rel="stylesheet" href="../../src/css/admin.css?v=<?php echo time(); ?>">
-	<title>Notifications</title>
+	<title>Request</title>
 </head>
 <body>
 
@@ -53,13 +53,13 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				</ul>
 			</li>
             <li>
-				<a href="#"><i class='bx bxs-user icon' ></i> Admin <i class='bx bx-chevron-right icon-right' ></i></a>
+				<a href="#" class="active"><i class='bx bxs-user icon' ></i> Admin <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
 					<li><a href="admin-data">Data</a></li>
 					<li><a href="add-admin">Add Admin</a></li>
 				</ul>
 			</li>
-			<li><a href="request"><i class='bx bxs-paper-plane icon' ></i> Request</a></li>
+			<li><a href=""><i class='bx bxs-paper-plane icon' ></i> Request</a></li>
 			<li class="divider" data-text="Academic Programs">Academic Programs</li>
 			<li>
 				<a href="#"><i class='bx bxs-notepad icon' ></i>Programs<i class='bx bx-chevron-right icon-right' ></i></a>
@@ -69,6 +69,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				</ul>
 			</li>
 		</ul>
+
 	</section>
 	<!-- SIDEBAR -->
 
@@ -103,83 +104,36 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">Notifications</h1>
+			<h1 class="title">Request</h1>
             <ul class="breadcrumbs">
 				<li><a href="home" >Home</a></li>
 				<li class="divider">|</li>
-                <li><a href="" class="active">Notifications</a></li>
+				<li><a href="" class="active">Request</a></li>
 			</ul>
 
-			<!-- SYSTEM CONFIGURATION -->
-
-            <section class="data-form">
-				<div class="header"></div>
-				<div class="registration" >
-					<form action="controller/update-system-config.php" method="POST" class="row gx-5 needs-validation" name="form" onsubmit="return validate()"  novalidate style="overflow: hidden;">
-						<div class="row gx-5 needs-validation" style="opacity: 0;">
-
-						<label class="form-label" style="text-align: left; padding-top: .5rem; padding-bottom: 2rem; font-size: 1rem; font-weight: bold;"><i class='bx bxs-edit'></i> System Configuration <p>Last update: <?php  echo $system_config_last_update  ?></p></label>
-
-							<div class="col-md-6">
-								<label for="sname" class="form-label">System Name<span> *</span></label>
-								<input type="text" class="form-control" autocapitalize="on" autocomplete="off" name="SName" id="sname" required value="<?php  echo $system_name  ?>">
-								<div class="invalid-feedback">
-								Please provide a System Name.
-								</div>
-							</div>
-
-							<div class="col-md-6" >
-								<label for="phone_number" class="form-label">Default Phone Number<span> *</span></label>
-								<div class="input-group flex-nowrap">
-								<span class="input-group-text" id="addon-wrapping">+63</span>
-								<input type="text" class="form-control numbers"  autocapitalize="off" inputmode="numeric" autocomplete="off" name="PNumber" id="phone_number" minlength="10" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required value="<?php  echo $system_number  ?>">
-								</div>
-							</div>
-
-							<div class="col-md-12">
-								<label for="email" class="form-label">Default Email<span> *</span></label>
-								<input type="email" class="form-control" autocapitalize="off" autocomplete="off" name="Email" id="email" required value="<?php  echo $system_email  ?>">
-								<div class="invalid-feedback">
-								Please provide a valid Email.
-								</div>
-							</div>
-
-						</div>
-
-					</form>
+            <section class="data-table">
+                <div class="searchBx">
+                    <input type="input" placeholder="search . . . . . ." class="search" name="search_box" id="search_box"><button class="searchBtn"><i class="bx bx-search icon"></i></button>
                 </div>
-            </section>		
-			
+
+                <div class="table">
+                <div id="dynamic_content">
+                </div>
+
+            </section>
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- END NAVBAR -->
-
 
 	<script src="../../src/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="../../src/node_modules/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="../../src/node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../../src/js/dashboard.js"></script>
 
+
+
 	<script>
-		
-
-		// Form
-		(function () {
-			'use strict'
-			var forms = document.querySelectorAll('.needs-validation')
-			Array.prototype.slice.call(forms)
-			.forEach(function (form) {
-				form.addEventListener('submit', function (event) {
-				if (!form.checkValidity()) {
-					event.preventDefault()
-					event.stopPropagation()
-				}
-
-				form.classList.add('was-validated')
-				}, false)
-			})
-		})();
 
 		// Signout
 		$('.btn-signout').on('click', function(e){
@@ -200,15 +154,37 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 			});
 		})
 
-		//numbers only----------------------------------------------------------------------------------------------------->
-		$('.numbers').keypress(function(e) {
-		var x = e.which || e.keycode;
-		if ((x >= 48 && x <= 57) || x == 8 ||
-			(x >= 35 && x <= 40) || x == 46)
-			return true;
-		else
-			return false;
-		});
+        //live search---------------------------------------------------------------------------------------//
+        $(document).ready(function(){
+
+        load_data(1);
+
+        function load_data(page, query = '')
+        {
+        $.ajax({
+            url:"data-table/request-data-table.php",
+            method:"POST",
+            data:{page:page, query:query},
+            success:function(data)
+            {
+            $('#dynamic_content').html(data);
+            }
+        });
+        }
+
+        $(document).on('click', '.page-link', function(){
+        var page = $(this).data('page_number');
+        var query = $('#search_box').val();
+        load_data(page, query);
+        });
+
+        $('#search_box').keyup(function(){
+        var query = $('#search_box').val();
+        load_data(1, query);
+        });
+
+        });
+
 	</script>
 
 	<!-- SWEET ALERT -->
@@ -231,4 +207,4 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 	}
 	?>
 </body>
-</html>     
+</html>
